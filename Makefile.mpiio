@@ -1,0 +1,24 @@
+#common
+CFLAGS=-O3 -g 
+
+CC=cc
+CXX=CC
+
+SRCS = mpiio.cxx 
+
+OBJS = 	$(SRCS:.cxx=.o)
+
+TARGET = mpiio 
+
+all:    $(TARGET)
+		@echo Compilation done.
+
+%.o:%.cxx
+		$(CXX) $(CFLAGS) -c $< -o $@ 
+
+$(TARGET): $(OBJS) 
+		$(CXX) $(CFLAGS) -o $(TARGET) $(OBJS) 
+
+clean:
+		$(RM) $(OBJS) *~ $(TARGET)
+
